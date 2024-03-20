@@ -32,13 +32,19 @@ class AllRun(object):
                 future.submit(self.serial_exec, obj).add_done_callback(self.callback)
             except Exception as err:
                 err = self.color_str(err, "red")
+                
+                print(err)
                 logging.error(err)
+
         future.shutdown(wait=True)
  
     def callback(self, future_obj):
         """回调函数，处理返回结果"""
         ssh_obj, rlist = future_obj.result()
+
         logging.info("{} execute detail:".format(ssh_obj.h))
+        print("{} execute detail:".format(ssh_obj.h))
+
         is_success = True
         for item in rlist:
             cmd, [code, res] = item
@@ -50,7 +56,10 @@ class AllRun(object):
                     self.failed_hosts.append(ssh_obj.h)
             else:
                 info = self.color_str(info, "green")
+            
             logging.info(info)
+            print(info)
+
         if is_success:
             self.success_hosts.append(ssh_obj.h)
             if ssh_obj.h in self.failed_hosts:
@@ -60,6 +69,7 @@ class AllRun(object):
         """展示总的执行结果"""
         for i in self.success_hosts:
             print(self.color_str(i, "green"))
+
         print("-" * 30)
         logging.info("-" * 30)
 
@@ -68,6 +78,7 @@ class AllRun(object):
         info = "Success hosts {}; Failed hosts {}."
         s, f = len(self.success_hosts), len(self.failed_hosts)
         info = self.color_str(info.format(s, f), "yellow")
+
         logging.info(info.format(s, f))
         print(info)
 
