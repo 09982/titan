@@ -1,7 +1,6 @@
-from concurrentSSH import AllRun
-from SSHParamiko import SSHParamiko
-from config import get_config
-import sys
+from ssh.concurrentSSH import AllRun
+from ssh.SSHParamiko import SSHParamiko
+from ssh.config import get_config
 
 if __name__ == '__main__':
     objs = []
