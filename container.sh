@@ -24,7 +24,7 @@ sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io -y
 
 # 拉取Docker镜像
-docker pull nezha123/titan-edge:1.1
+docker pull nezha123/titan-edge:latest
 
 # 创建5个容器
 for i in {1..5}
@@ -34,7 +34,7 @@ do
     mkdir -p "$storage"
 
     # 运行容器，并设置重启策略为always
-    container_id=$(docker run -d --restart always -v "$PWD/$storage:/root/.titanedge/storage" --name "titan$i" nezha123/titan-edge:1.1)
+    container_id=$(docker run -d --restart always -v "$PWD/$storage:/root/.titanedge/storage" --name "titan$i" nezha123/titan-edge:latest)
 
     echo "Container titan$i started with ID $container_id"
 
