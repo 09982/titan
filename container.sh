@@ -38,7 +38,7 @@ do
 
     echo "Container titan$i started with ID $container_id"
 
-    sleep 15
+    sleep 30
     
     # 进入容器并执行绑定和其他命令
     docker exec -it $container_id bash -c "\
