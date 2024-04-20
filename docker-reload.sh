@@ -1,3 +1,4 @@
+#!/bin/bash
 echo '[Unit]
 Description=Monitor and restart Titan containers
 Requires=docker.service
