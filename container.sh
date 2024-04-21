@@ -1,6 +1,6 @@
 #!/bin/bash
 
-id="$1"
+id="5471CFAE-1163-4DD8-A698-EB90AF500FEA"
 echo $id
 
 apt update
